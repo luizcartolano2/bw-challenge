@@ -1,0 +1,28 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Run tests with unittest
+      run: |
+        python -m unittest computed.computed_property_test -v
+        python -m unittest fileread.last_lines_test -v
+        python -m unittest reconcile.transaction_reconciler_test -v
