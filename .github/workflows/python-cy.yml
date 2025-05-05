@@ -23,4 +23,6 @@ jobs:
 
     - name: Run tests with unittest
       run: |
-        python -m unittest discover
+        python -m unittest computed.computed_property_test -v
+        python -m unittest fileread.last_lines_test -v
+        python -m unittest reconcile.transaction_reconciler_test -v
